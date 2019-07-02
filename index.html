@@ -1,0 +1,113 @@
+<!--
+
+Copyright (c) 2019 - ALANDOUGLAS GODINHO MENDES - https://codepen.io/alandouglasmendes/pen/GbQJoJ
+
+Permission is hereby granted, free of charge, to any person 
+obtaining a copy of this software and associated documentation 
+files (the "Software"), to deal in the Software without restriction,
+ including without limitation the rights to use, copy, modify, 
+merge, publish, distribute, sublicense, and/or sell copies of 
+the Software, and to permit persons to whom the Software is 
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall 
+be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES 
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND 
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT 
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+DEALINGS IN THE SOFTWARE.
+
+-->
+<!DOCTYPE HTML>
+<html>
+ <main>
+   <head>    
+     <title>A bmf and bmi index calculator made using html/css/javascripting</title>  <style type="text/css"> 
+     #main_title
+{
+  color: #002288;
+}
+     #main_alert {
+       color: #ff0000;
+       
+     }
+     #data_entry_holder{
+       width: 58%;
+       background-color: #006600;
+       color: #99ff99;
+       border: #ff9999 0.5% groove;
+       margin: auto;
+       text-align: left;
+       border-radius: .5em;
+       float: left;
+     }
+     #bfm_bmi_holder{
+       width: 39%;
+       height: 100px;
+       background-color: #000066;
+       color: #9999ff;
+       border: #99ff99 0.5% groove;
+       margin: auto;
+       text-align: left;
+       border-radius: .5em;
+       float: right;
+     }
+     </style>
+     <script type="text/javascript">
+
+function convertPoundsToKg()
+{
+  
+  var massPound = document.getElementById('mass_pounds_tb').value;
+  var massKg = massPound*0.453;
+  document.getElementById('massConv').innerText="Your mass in kg is equal to " + massKg.toFixed(3)+" Kgs.";
+    }
+function convertHeightInchCm()
+{
+  
+  var heightInch = document.getElementById('height_inches_tb').value;
+  var heightCm = heightInch*2.5/100;
+  document.getElementById('heightConv').innerText="Your height in meters is equal to " + heightCm.toFixed(2)+"  meters.";
+    }
+ function convertWaistInchCm()
+{
+  
+  var waistInch = document.getElementById('waist_inches_tb').value;
+  var waistCm = waistInch*2.5;
+  document.getElementById('waistConv').innerText="Your waist in meters is equal to " + waistCm.toFixed(2)/100+" meters.";
+    }
+       
+</script>
+   </head>
+   <body id='main'>
+   <h1 id='main_title' name='main_title' class='main_title'>This is a web app written to calculate both body mass index and body fat mass percentage</h1>
+   <h2 id='main_alert' name='main_alert' class='main_alert'>This app is not a doctor, is just a source of tips! Keep that in mind!</h2> <!--It is really important to avoid misuse of technology and knowledge in small portions, specially on unsupervisioned content/use, concerning to health.-->
+   <div id='data_entry_holder'name='data_entry_holder' class='data_entry_holder'>
+     <h3 id='data_entry_solicitation' name='data_entry_solicitation' class=' data_entry_solicitation'>
+       Please insert your data on the respective textboxes below and mark your measuring accordingly
+     </h3>
+   <div id='pound_data'>
+   <label id='label_input_pounds'>How many pounds do you weight?</label><input id="mass_pounds_tb" type="number" min="1" max="1200"  oninput="convertPoundsToKg()">
+   <p id='massConv'>Your mass is unknown.</p>
+    </div>
+    <div id='inch_data'>
+      <label id='label_input_inch'>What is your height?</label><input id="height_inches_tb" type="number" min="1" max="120"  oninput="convertHeightInchCm()">
+   <p id='heightConv'>Your height is unknown.</p>
+      <label id='label_input_inch'>What is your waist?</label><input id="waist_inches_tb" type="number" min="1" max="120"  oninput="convertWaistInchCm()">
+   <p id='waistConv'>Your waist is unknown.</p>
+     </div>    
+      <hr>
+   </div>
+    <div id='bfm_bmi_holder'>
+       <label id='label_bfp_output'>Click submit to evaluate your bfp, with given data:</label> <p id='bfpOutput'></p>
+      <br>
+       <input id="calc_bfp" type="submit"  oninput="calcBfp()"
+     </div>
+ </body>
+</main>    
+</html>     
